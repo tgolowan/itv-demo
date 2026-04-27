@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "name": "i2v_svd_doc_image",
+      "input": {
+        "image_url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/svd-docstring-example.jpeg",
+        "duration": 2,
+        "fps": 8
+      },
+      "timeout": 900000
+    }
+  ],
+  "config": {
+    "gpuTypeId": "NVIDIA RTX A4000",
+    "gpuCount": 1,
+    "allowedCudaVersions": ["12.1", "12.4", "12.6", "12.7", "12.8"],
+    "env": []
+  }
+}

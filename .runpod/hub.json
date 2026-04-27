@@ -1,0 +1,60 @@
+{
+  "title": "ITV Demo — Image to short video (SVD)",
+  "description": "Cheap POC: Stable Video Diffusion (fp16) turns one image into a short 720p MP4. Set HF_TOKEN if Hugging Face asks for a license. Lower duration/fps to save GPU time.",
+  "type": "serverless",
+  "category": "video",
+  "iconUrl": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+  "config": {
+    "runsOn": "GPU",
+    "endpointType": "LB",
+    "containerDiskInGb": 25,
+    "gpuCount": 1,
+    "gpuIds": "RTX A4000,NVIDIA GeForce RTX 4080",
+    "allowedCudaVersions": ["12.1", "12.4", "12.6", "12.7", "12.8"],
+    "env": [
+      {
+        "key": "HF_TOKEN",
+        "input": {
+          "name": "Hugging Face token",
+          "type": "string",
+          "description": "Read token if the SVD model is gated (accept the license on the model page first).",
+          "default": "",
+          "advanced": true
+        }
+      },
+      {
+        "key": "SVD_NATIVE_FRAMES",
+        "input": {
+          "name": "Latent frames",
+          "type": "number",
+          "description": "More = better motion, more VRAM/time (try 4–8).",
+          "min": 4,
+          "max": 14,
+          "default": 6,
+          "advanced": true
+        }
+      },
+      {
+        "key": "SVD_STEPS",
+        "input": {
+          "name": "Inference steps",
+          "type": "number",
+          "description": "More = slower, often slightly better.",
+          "min": 4,
+          "max": 25,
+          "default": 8,
+          "advanced": true
+        }
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cheapest smoke test",
+        "defaults": {
+          "SVD_NATIVE_FRAMES": 6,
+          "SVD_STEPS": 8
+        }
+      }
+    ]
+  }
+}

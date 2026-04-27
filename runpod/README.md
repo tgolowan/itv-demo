@@ -1,6 +1,8 @@
 # RunPod: cheapest image→video POC
 
-Minimal **CUDA + Stable Video Diffusion** container. Tuned for **low GPU time** and **~12–16 GB VRAM** (fp16, 6 latent frames, 8 steps, 720p, short timeline).
+Minimal **CUDA + Stable Video Diffusion** container. Shared logic lives in **`svd_core.py`** (used by `run_svd_cuda.py` and the Hub **`.runpod/handler.py`**).
+
+For **RunPod Hub**, build context is the **repo root**; see `../.runpod/` and the root `README.md`. Tuned for **low GPU time** and **~12–16 GB VRAM** (fp16, 6 latent frames, 8 steps, 720p, short timeline).
 
 ## Cost tips
 

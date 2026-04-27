@@ -17,7 +17,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY run_svd_cuda.py .
+COPY svd_core.py run_svd_cuda.py .
 RUN chmod +x run_svd_cuda.py
 
 # Default: cheap clip (override args when running)
