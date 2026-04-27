@@ -1,6 +1,8 @@
 # Torch + CUDA: supplied by base image (see Dockerfile).
-diffusers>=0.30.0
-transformers>=4.40.0
+# diffusers>=0.35 pulls attention_dispatch + Hub flash kernels that register torch.custom_op
+# signatures PyTorch 2.4 infer_schema rejects (import fails in autoencoder_kl_temporal_decoder).
+diffusers>=0.30.0,<0.35.0
+transformers>=4.41.2
 accelerate>=0.30.0
 safetensors>=0.4.0
 pillow>=10.0.0
